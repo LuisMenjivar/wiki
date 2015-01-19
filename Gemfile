@@ -37,6 +37,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro', '1.0'
 
 group :development, :test do
+  gem 'capybara'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
   
