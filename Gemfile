@@ -37,6 +37,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro', '1.0'
 
 group :development, :test do
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'database_cleaner'
   gem 'email_spec'
   gem 'capybara'
   # Use sqlite3 as the database for Active Record
