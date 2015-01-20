@@ -4,7 +4,7 @@ feature "sign up" do
   let(:user) { build(:user) }
   scenario "successfully" do 
     reset_mailer
-    sign_up(user.email, user.password)
+    sign_up(user.email, user.password)#sign_up method in support/features/sessionhelper.rb
     expect(page).to have_text("A message with a confirmation link has been sent to your email address ")
     expect(unread_emails_for(user.email).count).to eq(1)
     open_email(user.email)
