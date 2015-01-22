@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @wiky.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @wiky.body %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @wiky.user %>
+</p>
+
+<%= link_to 'Edit', edit_wiky_path(@wiky) %> |
+<%= link_to 'Back', wikies_path %>
