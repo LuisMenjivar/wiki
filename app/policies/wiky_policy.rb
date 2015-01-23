@@ -1,0 +1,2 @@
+class WikyPolicy < ApplicationPolicy
+end
