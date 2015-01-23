@@ -1,5 +1,6 @@
 #add pundit to Gemfile and bundle. 
-#This file was generated with (rails g pundit:install) 
+#This file was generated with (rails g pundit:install)
+# (include Pundit) in the application controlller in order to use its methods. 
 class ApplicationPolicy
   attr_reader :user, :record
 
@@ -9,15 +10,15 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    user.present?
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    scope.where(:id => record.id).exists? && user.present?
   end
 
   def create?
-    false
+    user.present?
   end
 
   def new?
@@ -25,7 +26,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    user.present? && (record.user == user || user.role == admin)
   end
 
   def edit?
@@ -33,11 +34,11 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    update?
   end
 
   def scope
-    Pundit.policy_scope!(user, record.class)
+    record.class
   end
 
   class Scope
