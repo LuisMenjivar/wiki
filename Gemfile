@@ -36,6 +36,7 @@ gem 'pundit'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'figaro', '1.0'
+gem 'faker'
 
 group :development, :test do
   gem 'shoulda-matchers', require: false
