@@ -85,6 +85,15 @@ RSpec.describe WikiesController, :type => :controller do
         post :create, {:wiky => valid_attributes}, valid_session
         expect(response).to redirect_to(Wiky.last)
       end
+
+      it "creates a todo associated with current user" do 
+        user = create(:user)
+        sign_in user
+        post :create, wiky: { body: "This is the body" }
+        expect(Wiky.all.count).to eq 1
+        expect(Wiky.first.body).to eq "This is the body"
+      end
+  
     end
 
     describe "with invalid params" do
