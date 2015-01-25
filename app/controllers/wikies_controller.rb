@@ -26,7 +26,7 @@ class WikiesController < ApplicationController
   end
 
   def create
-    @wiky = Wiky.new(wiky_params)
+    @wiky = current_user.wikys.new(wiky_params)
     authorize @wiky
     @wiky.save
     respond_with(@wiky)
