@@ -37,6 +37,8 @@ gem 'pundit'
 # gem 'capistrano-rails', group: :development
 gem 'figaro', '1.0'
 gem 'faker'
+gem 'stripe'
+source 'https://code.stripe.com'
 
 group :development, :test do
   gem 'shoulda-matchers', require: false
@@ -57,5 +59,7 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails', '~> 3.1.0'
+  gem 'selenium-webdriver'
+  gem "chromedriver-helper"
 end
 

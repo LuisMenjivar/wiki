@@ -48,6 +48,14 @@ admin = User.new(
 )
 admin.skip_confirmation!
 admin.save!
+
+admin = User.new(
+  email:    'stand@example.com',
+  password: 'helloworld',
+  role:     'standard'
+)
+admin.skip_confirmation!
+admin.save!
  
 puts "DATABASE HAS BEEN SEEDED!!"
 puts "#{users.count} Users were created"
