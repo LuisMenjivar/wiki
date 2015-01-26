@@ -3,9 +3,6 @@ class ChargesController < ApplicationController
   def new
   end
 
-
-  end
-
   def create
     # The "premium plan must first be created either 
     # @https://dashboard.stripe.com/plans 
@@ -45,5 +42,5 @@ class ChargesController < ApplicationController
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path
-  
+  end
 end
