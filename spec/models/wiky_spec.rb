@@ -6,5 +6,10 @@ RSpec.describe Wiky, :type => :model do
       expect(Wiky.new).to belong_to(:user)
     end 
   end 
-
+  context "create" do 
+    it "wiky defaults to public " do 
+      wiky = Wiky.create
+      expect((wiky.reload).public).to eq(true) 
+    end 
+  end
 end
