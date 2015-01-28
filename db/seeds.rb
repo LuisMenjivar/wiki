@@ -32,30 +32,23 @@ admin.skip_confirmation!
 admin.save!
 
 # Create an premium user
-admin = User.new(
+premium = User.new(
   email:    'premium@example.com',
   password: 'helloworld',
   role:     'premium'
 )
-admin.skip_confirmation!
-admin.save!
+premium.skip_confirmation!
+premium.save!
 
 # Create an standard user
-admin = User.new(
+standard = User.new(
   email:    'standard@example.com',
   password: 'helloworld',
   role:     'standard'
 )
-admin.skip_confirmation!
-admin.save!
+standard.skip_confirmation!
+standard.save!
 
-admin = User.new(
-  email:    'stand@example.com',
-  password: 'helloworld',
-  role:     'standard'
-)
-admin.skip_confirmation!
-admin.save!
  
 puts "DATABASE HAS BEEN SEEDED!!"
 puts "#{users.count} Users were created"
