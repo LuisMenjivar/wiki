@@ -1,5 +1,4 @@
 require 'rails_helper'
-include Devise::TestHelpers
 RSpec.describe "Wikies", :type => :request do
  
   describe "GET /wikies" do
