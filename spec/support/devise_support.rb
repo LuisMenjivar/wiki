@@ -1,5 +1,8 @@
 module ValidUserRequestHelper
+<<<<<<< HEAD
   # include Devise::TestHelpers
+=======
+>>>>>>> policies-specs
   def sign_in_as_a_valid_user
     @user = FactoryGirl.create :user
     #generate a valid user for us
