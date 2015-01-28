@@ -26,7 +26,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user.present? && (record.public == nil || user.admin? || record.user == user)
+    user.present? && (record.public || user.admin? || record.user == user)
   end
 
   def edit?
