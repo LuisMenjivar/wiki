@@ -4,16 +4,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_many :wikys
-<<<<<<< HEAD
+
   before_create :default_to_standard
-
-  private
-  def default_to_standard
-    self.role = "standard"
-=======
-
+  
   def admin? 
     role == "admin"
->>>>>>> policies-specs
   end
+
+  private
+  
+  def default_to_standard
+    self.role = "standard"
+  end 
 end 
