@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 RSpec.describe "Wikies", :type => :request do
  
   describe "GET /wikies" do
