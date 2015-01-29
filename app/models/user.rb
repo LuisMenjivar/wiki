@@ -11,6 +11,14 @@ class User < ActiveRecord::Base
     role == "admin"
   end
 
+  def premium?
+    role == "premium"
+  end
+
+  def standard?
+    role == "standard"
+  end
+
   private
   
   def default_to_standard
