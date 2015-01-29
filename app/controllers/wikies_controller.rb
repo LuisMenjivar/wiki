@@ -15,7 +15,7 @@ class WikiesController < ApplicationController
   end
 
   def new
-    @wiky = Wiky.new
+    @wiky = current_user.wikys.new
     authorize @wiky
     respond_with(@wiky)
   end
@@ -52,6 +52,6 @@ class WikiesController < ApplicationController
     end
 
     def wiky_params
-      params.require(:wiky).permit(:title, :body, :user_id)
+      params.require(:wiky).permit(:title, :body, :user_id, :public)
     end
 end
