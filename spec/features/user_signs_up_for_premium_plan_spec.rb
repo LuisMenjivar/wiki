@@ -1,14 +1,11 @@
 require 'rails_helper'
-include Warden::Test::Helpers
-include Devise::TestHelpers
-Warden.test_mode!
 
-feature 'Subscription' do
-  
+feature 'Premium Subscription' do
   let(:user) { create(:user) }
   scenario 'User signs up for premium wikys', js: true do
-
-    sign_in(user.email, user.password)
+    
+    sign_in(user.email, user.password)#sign_in method from spec/support/features/session_helpers.rb
+    expect(user.role).to eq("standard")
     visit new_charge_path
     click_button "Subscribe Now"
     sleep(5) # allows stripe_checkout_app frame to load
@@ -20,8 +17,9 @@ feature 'Subscription' do
       fill_in 'cc-exp', with: "12/23"
       fill_in 'cc-csc', with: "123"
       click_button "submitButton"
-      # sleep(5) # allows stripe_checkout_app to submit
-      # expect(page).to have_content("Welcome")
+      sleep(5) # allows stripe_checkout_app to submit
+      expect(page).to have_content("Welcome")
+      expect(user.reload.role).to eq("premium")
     end
   end
 end
