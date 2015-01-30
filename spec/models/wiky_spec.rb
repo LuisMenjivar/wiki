@@ -8,7 +8,7 @@ RSpec.describe Wiky, :type => :model do
   end 
   context "create" do 
     it "wiky defaults to public " do 
-      wiky = Wiky.create
+      wiky = create(:wiky)
       expect((wiky.reload).public).to eq(true) 
     end 
   end
