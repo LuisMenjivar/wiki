@@ -23,18 +23,17 @@ RSpec.describe WikiesController, :type => :controller do
   # This should return the minimal set of attributes required to create a valid
   # Wiky. As you add validations to Wiky, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+
+  let(:valid_attributes) {{title: "This is the Wiki's title"}}
+
+  let(:invalid_attributes) {{title: "no"}}
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # WikiesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { @user = create(:user)
+    sign_in @user }
 
   describe "GET index" do
     it "assigns all wikies as @wikies" do
@@ -87,17 +86,15 @@ RSpec.describe WikiesController, :type => :controller do
       end
 
       it "creates a todo associated with current user" do 
-        user = create(:user)
-        sign_in user
-        post :create, wiky: { body: "This is the body" }
+        post :create, {:wiky => valid_attributes}, valid_session
         expect(Wiky.all.count).to eq 1
-        expect(Wiky.first.body).to eq "This is the body"
+        expect(Wiky.first.title).to eq "This is the Wiki's title"
       end
-  
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved wiky as @wiky" do
+
         post :create, {:wiky => invalid_attributes}, valid_session
         expect(assigns(:wiky)).to be_a_new(Wiky)
       end
@@ -111,15 +108,13 @@ RSpec.describe WikiesController, :type => :controller do
 
   describe "PUT update" do
     describe "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+      let(:new_attributes) { {title: "new title" }}
 
       it "updates the requested wiky" do
         wiky = Wiky.create! valid_attributes
         put :update, {:id => wiky.to_param, :wiky => new_attributes}, valid_session
         wiky.reload
-        skip("Add assertions for updated state")
+        expect(wiky.title).to eq("new title")
       end
 
       it "assigns the requested wiky as @wiky" do

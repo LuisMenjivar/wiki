@@ -4,9 +4,12 @@ class WikiesController < ApplicationController
   respond_to :html
 
   def index
-    @wikies = Wiky.all
+    @wikies = Wiky.public_wikys
     authorize @wikies
-    respond_with(@wikies)
+    if current_user.premium?
+      @private = current_user.wikys.private_wikys
+      authorize @private
+    end
   end
 
   def show
