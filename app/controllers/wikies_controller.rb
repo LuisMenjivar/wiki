@@ -6,7 +6,7 @@ class WikiesController < ApplicationController
   def index
     @wikies = Wiky.public_wikys
     authorize @wikies
-    if current_user.premium?
+    if (current_user.premium? || current_user.admin?)
       @private = current_user.wikys.private_wikys
       authorize @private
     end
