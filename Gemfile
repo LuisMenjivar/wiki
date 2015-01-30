@@ -39,6 +39,7 @@ gem 'figaro', '1.0'
 gem 'faker'
 gem 'stripe'
 source 'https://code.stripe.com'
+gem 'redcarpet'
 
 group :development, :test do
   gem 'shoulda-matchers', require: false
