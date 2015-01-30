@@ -29,7 +29,7 @@
 <br>
 
 <%= link_to 'New Wiky', new_wiky_path %>
-
+<% if (current_user.premium? || current_user.admin?) %>
 <h1>Private Wikies</h1>
 
 <table>
@@ -61,3 +61,6 @@
 
 <%= link_to 'New Wiky', new_wiky_path %>
 
+<% else %>
+   
+<% end %>
