@@ -13,14 +13,16 @@ users = User.all
  
 # Create Wikys
 50.times do
-  Wiky.create!(
-    user: users.sample,
+  wiky = Wiky.new(
     title:  Faker::Lorem.sentence,
     body:   Faker::Lorem.paragraph,
     created_at: rand(2.hours .. 1.year).ago
   )
+  wiky.collaborations.build(user: users.sample)
+  wiky.save
 end
 wikys = Wiky.all
+collaborations = Collaboration.all
 
 # Create an admin user
 admin = User.new(
@@ -53,3 +55,4 @@ standard.save!
 puts "DATABASE HAS BEEN SEEDED!!"
 puts "#{users.count} Users were created"
 puts "#{wikys.count} Wikys were created"
+puts "#{collaborations.count} Collaborations were created" 

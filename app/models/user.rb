@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
-  has_many :wikys
+  has_many :collaborations
+  has_many :wikys, through: :collaborations
 
   before_create :default_to_standard
   
