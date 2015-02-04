@@ -40,6 +40,7 @@ gem 'faker'
 gem 'stripe'
 source 'https://code.stripe.com'
 gem 'redcarpet'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'shoulda-matchers', require: false
