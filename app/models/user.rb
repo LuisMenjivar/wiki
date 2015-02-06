@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_many :wikys
   has_many :collaborations
-  has_many :collaborated_wikys, through: :collaborations, class_name: "Wiky"
+  has_many :collaborated_wikys, through: :collaborations, source: "wiky"
 
   before_create :default_to_standard
   
