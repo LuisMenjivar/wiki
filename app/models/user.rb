@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :collaborated_wikys, through: :collaborations, source: "wiky"
 
   before_create :default_to_standard
+
   
   def admin? 
     role == "admin"

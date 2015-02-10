@@ -54,12 +54,39 @@
     <% end %>
   </tbody>
 </table>
-
-
 <br>
 
-<%= link_to 'New Wiky', new_wiky_path %>
+<%= link_to 'New Wiky', new_wiky_path %><br>   
+<% end %>
 
-<% else %>
-   
+<% if (current_user.standard?) %>
+<h1>Private Wikies you have been granted rights to collaborate</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+<% @allowed_collaborations.each do |wiky| %>
+      <tr>
+        <td><%= wiky.title %></td>
+        <td><%= wiky.body %></td>
+        <td><%= User.find(wiky.user_id).email %></td>
+        <td><%= link_to 'Show', wiky %></td>
+        <td><%= link_to 'Edit', edit_wiky_path(wiky) %></td>
+        <td><%= link_to 'Destroy', wiky, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to 'New Wiky', new_wiky_path %><br>   
 <% end %>

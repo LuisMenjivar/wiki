@@ -1,6 +1,6 @@
 <h1>Editing Wiky</h1>
-
 <%= render 'form' %>
+<%= render 'collaborations/form', collaborations: @collaboration, wiky: @wiky  %><br>
 
 <%= link_to 'Show', @wiky %> |
 <%= link_to 'Back', wikies_path %>
