@@ -12,12 +12,17 @@
   <% end %>
 
   <% if current_user.admin? || (current_user.premium? && @wiky.user_id == current_user.id) %>
-    <div class = "form-group">
+  <form>
+    <div class = "checkbox">
+ <input type="checkbox">
       <%= f.label :public, class: "checkbox" do  %>
       <%= f.check_box :public %> Public Wiky
       <% end %>
     </div>
-    <% end %> <%= current_user.role %>
+  </div>
+    <% end %>
+
+     <%= current_user.role %>
 
   <div class="field">
     <%= f.label :title %><br>

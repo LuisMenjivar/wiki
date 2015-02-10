@@ -1,0 +1,42 @@
+<% if current_user.admin? || (current_user.premium? && @wiky.user_id == current_user.id) %>
+  <%= form_for [@wiky, @wiky.collaborations.build ] do |f| %>
+    
+    <div class="field">
+      <%= label_tag :email, "Collaborator Email" %><br>
+      <%= email_field_tag :email%>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Add Collaborator" %>
+    </div>
+
+  <% end %>
+
+  <p>This is the owner:
+<%=  @wiky.user.email %></p>
+
+  <strong>Delete Collaborators</strong><br>
+  <table class= "table table-striped">
+    
+
+
+  <% @user_ids_array.each do |user_id| %>
+  
+   
+    <tr>
+     <td><%= User.find(user_id).email %></td> 
+     <td><%= link_to('Destroy', wiky_collaboration_path(@wiky, (
+      @wiky.collaborations.where(user_id: user_id).pluck(:id))), 
+      :method => 'delete', controller: :collaborations)  %></td>
+    </tr>
+   
+
+  <% end %> 
+ </table>
+
+
+
+
+<% end %>
+
+
