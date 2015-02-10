@@ -14,8 +14,8 @@ users = User.all
 # Create Wikys
 50.times do
   wiky = Wiky.new(
-    title:  Faker::Lorem.sentence,
-    body:   Faker::Lorem.paragraph,
+    title:  Faker::Company.bs,
+    body:   Faker::Hacker.say_something_smart,
     created_at: rand(2.hours .. 1.year).ago
   )
   wiky.collaborations.build(user: users.sample)
@@ -32,6 +32,7 @@ admin = User.new(
 )
 admin.skip_confirmation!
 admin.save!
+admin.update(role: "admin")
 
 # Create an premium user
 premium = User.new(
@@ -41,6 +42,7 @@ premium = User.new(
 )
 premium.skip_confirmation!
 premium.save!
+premium.update(role: "premium")
 
 # Create an standard user
 standard = User.new(
