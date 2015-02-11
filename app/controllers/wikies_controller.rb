@@ -3,6 +3,10 @@ class WikiesController < ApplicationController
 
   respond_to :html
 
+  def search_results
+    @found_products = Wiky.search_for(params[:search_keywords])
+  end
+
   def index
     @allowed_collaborations = allowed_collaborations(current_user)
     @wikies = Wiky.public_wikys

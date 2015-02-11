@@ -5,4 +5,9 @@ class Wiky < ActiveRecord::Base
   validates :title, length: { minimum: 5 }
   scope :public_wikys, -> { where(public: true) }
   scope :private_wikys, -> {where(public: false)}
+
+  def self.search_for(keyword)
+    keywords = "%" + keyword + "%"
+    Wiky.where("title LIKE  ? OR body LIKE ?", keywords, keywords)
+  end
 end

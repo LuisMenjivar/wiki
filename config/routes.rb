@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   resources :wikies do
     resources :collaborations
-end
-
+  end
+  get 'search' => 'wikies#search', as: 'search'
+  get 'search_results' => 'wikies#search_results', as: 'search_results'
+  
   devise_for :users
   root to: "welcome#index"
-  get 'welcome/index'
   resources :charges, only: [:new, :create]
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
