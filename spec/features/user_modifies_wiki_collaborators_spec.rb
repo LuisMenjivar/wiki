@@ -14,6 +14,8 @@ feature "user modifies a wiki's collaborator" do
     expect(current_path).to eq(edit_wiky_path(@wiki))
     expect(page).to have_css(
       "tr td:nth-child(1)", text: collaborator.email) 
+    expect(page).to have_css(
+      "tr td:nth-child(2)", text: "Destroy") 
     click_link "Destroy"
     expect(page).to_not have_css(
       "tr td:nth-child(1)", text: collaborator.email)

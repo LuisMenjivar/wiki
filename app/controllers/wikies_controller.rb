@@ -26,7 +26,8 @@ class WikiesController < ApplicationController
 
   def edit
     @user_ids_array = @wiky.collaborations.pluck(:user_id)
-    @wiky = Wiky.find(params[:id])
+    # @wiky = Wiky.find(params[:id])
+    # set_wiky
     authorize @wiky
   end
 
