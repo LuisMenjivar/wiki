@@ -13,12 +13,10 @@
 
   <% if current_user.admin? || (current_user.premium? && @wiky.user_id == current_user.id) %>
   <form>
-    <div class = "checkbox">
- <input type="checkbox">
-      <%= f.label :public, class: "checkbox" do  %>
+  <div class = "checkbox">
+      <%= f.label :public do  %>
       <%= f.check_box :public %> Public Wiky
       <% end %>
-    </div>
   </div>
     <% end %>
 
