@@ -7,6 +7,8 @@ RSpec.describe "wikies/edit", :type => :view do
       :body => "MyText",
       :user => nil
     ))
+    @user =  create(:user)
+    sign_in @user
   end
 
   it "renders the edit wiky form" do
@@ -17,8 +19,6 @@ RSpec.describe "wikies/edit", :type => :view do
       assert_select "input#wiky_title[name=?]", "wiky[title]"
 
       assert_select "textarea#wiky_body[name=?]", "wiky[body]"
-
-      assert_select "input#wiky_user_id[name=?]", "wiky[user_id]"
     end
   end
 end
