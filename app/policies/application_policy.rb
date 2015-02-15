@@ -26,7 +26,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user.present? && (record.public || user.admin? || record.user == user || record.collaborators.pluck(:user_id).include?(user.id))
+    user.present? 
   end
 
   def edit?
