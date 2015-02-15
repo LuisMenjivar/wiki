@@ -8,7 +8,7 @@ class WikiesController < ApplicationController
   end
 
   def index
-    @allowed_collaborations = allowed_collaborations(current_user)
+    @allowed_collaborations = Collaboration.where(user_id: current_user.id).map(&:wiky)
     @wikies = Wiky.public_wikys
     authorize @wikies
     if (current_user.premium? || current_user.admin?)
@@ -62,13 +62,5 @@ class WikiesController < ApplicationController
 
   def wiky_params
     params.require(:wiky).permit(:title, :body, :user_id, :public)
-  end
-
-  def  allowed_collaborations(user)
-    @wiky1 = []
-    Wiky.all.each { |wiky|wiky.collaborations.where(
-    user_id: user.id).pluck(:wiky_id).each {
-    |id| @wiky1 << Wiky.find(id)}}
-    return @wiky1
   end
 end

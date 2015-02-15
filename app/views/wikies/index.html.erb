@@ -80,7 +80,7 @@
 
 <% @allowed_collaborations.each do |wiky| %>
       <tr>
-        <td><%= wiky.title %></td>
+        <td><%= wiky.reload.title %></td>
         <td><%= wiky.body %></td>
         <td><%= User.find(wiky.user_id).email %></td>
         <td><%= link_to 'Show', wiky %></td>
