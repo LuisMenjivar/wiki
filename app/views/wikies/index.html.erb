@@ -50,7 +50,7 @@
       <tr>
         <td><%= wiky.title %></td>
         <td><%= wiky.body %></td>
-        <td><%= User.find(wiky.user_id).email %></td>
+        <td><%= wiky.user.email %></td>
         <td><%= link_to 'Show', wiky %></td>
         <td><%= link_to 'Edit', edit_wiky_path(wiky) %></td>
         <td><%= link_to 'Destroy', wiky, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -82,7 +82,7 @@
       <tr>
         <td><%= wiky.reload.title %></td>
         <td><%= wiky.body %></td>
-        <td><%= User.find(wiky.user_id).email %></td>
+        <td><%= wiky.user.email %></td>
         <td><%= link_to 'Show', wiky %></td>
         <td><%= link_to 'Edit', edit_wiky_path(wiky) %></td>
         <td><%= link_to 'Destroy', wiky, method: :delete, data: { confirm: 'Are you sure?' } %></td>
