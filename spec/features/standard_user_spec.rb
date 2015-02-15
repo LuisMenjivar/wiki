@@ -2,15 +2,14 @@ require 'rails_helper'
 feature 'Standard user collaboraration' do
   before do
     premium_user = create(:user, role: "premium")
-    premium_user.update(role: "premium")
     @wiki = create(
     :wiky, user: premium_user, public: false, title: "Valid Title")
     
-    @standard_user = create(:user)
+    @standard_user = create(:user, role: "standard")
     sign_in(@standard_user.email, @standard_user.password)
   end
   scenario "User is only allowed to view an index with 
-            private wikies he/she is a collaborator for" do     
+            private wikies he/she is a collaborator for" do  
     visit wikies_path
     expect(page).not_to have_text(@wiki.title)
     @wiki.collaborations.create!(user_id: @standard_user.id)

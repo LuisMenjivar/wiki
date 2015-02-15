@@ -32,7 +32,6 @@ admin = User.new(
 )
 admin.skip_confirmation!
 admin.save!
-admin.update(role: "admin")
 
 # Create an premium user
 premium = User.new(
@@ -42,7 +41,6 @@ premium = User.new(
 )
 premium.skip_confirmation!
 premium.save!
-premium.update(role: "premium")
 
 # Create an standard user
 standard = User.new(

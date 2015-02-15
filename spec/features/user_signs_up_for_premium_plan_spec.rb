@@ -4,7 +4,7 @@ feature 'Premium Subscription' do
   let(:user) { create(:user) }
   scenario 'User signs up for premium wikys', js: true, slow: true do
     sign_in(user.email, user.password)#sign_in method from spec/support/features/session_helpers.rb
-    expect(user.role).to eq("standard")
+    expect(user.role).to eq(nil)
     visit new_charge_path
     click_button "Subscribe Now"
     sleep(5) # allows stripe_checkout_app frame to load
