@@ -7,7 +7,7 @@ class Wiky < ActiveRecord::Base
   scope :private_wikys, -> {where(public: false)}
 
   def self.search_for(keyword)
-    keywords = "%" + keyword + "%"
+    keywords = "%#{keyword}%"
     Wiky.where("title LIKE  ? OR body LIKE ?", keywords, keywords)
   end
 end

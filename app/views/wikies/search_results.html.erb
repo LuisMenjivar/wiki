@@ -1,38 +1,33 @@
-<!DOCTYPE html>
-<html>
 <head>
-<div class="container">
- 
-<h4>Search results for : '<%= params[:search_keywords]%>'</h4>
+  <div class="container">
+    <h4>Search results for : '<%= params[:search_keywords]%>'</h4>
 
-<% if @found_products.empty? %>
-<p>We are sorry, no results were found</p>
-<% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th></th>
-      <th colspan="3"> </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @found_products.each do |wiky| %>
-      <tr>
-        <td><%= wiky.title %></td>
-        <td><%= wiky.body %></td>
-        <td><%#= User.find(wiky.user_id).email %></td>
-       <td><%= link_to 'Show', wiky %></td>
-        <td><%= link_to 'Edit', edit_wiky_path(wiky) %></td>
-        <td><%= link_to 'Destroy', wiky, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    
-      </tr>
+    <% if @found_wikies.empty? %>
+      <p>We are sorry, no results were found</p>
     <% end %>
-  </tbody>
-</table>
-<br>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Body</th>
+          <th></th>
+          <th colspan="3"> </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @found_wikies.each do |wiky| %>
+          <tr>
+            <td><%= wiky.title %></td>
+            <td><%= wiky.body %></td>
+            <td><%= link_to 'Show', wiky %></td>
+            <td><%= link_to 'Edit', edit_wiky_path(wiky) %></td>
+            <td><%= link_to 'Destroy', wiky, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+  <br>
 </head>
-</html>
