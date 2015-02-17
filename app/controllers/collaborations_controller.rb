@@ -3,8 +3,8 @@ class CollaborationsController < ApplicationController
     @wiky = Wiky.find(params[:wiky_id])
     @user = User.where(email: params[:email]).first
     if @user
-    Collaboration.create(user: @user, wiky_id: @wiky.id)
-    redirect_to edit_wiky_path(@wiky)
+      Collaboration.create(user: @user, wiky_id: @wiky.id)
+      redirect_to edit_wiky_path(@wiky)
     else
       flash[:alert] = "The email you typed is not in our database!"
       redirect_to edit_wiky_path(@wiky)

@@ -4,7 +4,7 @@ class WikiesController < ApplicationController
   respond_to :html
 
   def search_results
-    @found_products = Wiky.search_for(params[:search_keywords])
+    @found_wikies = Wiky.search_for(params[:search_keywords])
   end
 
   def index
