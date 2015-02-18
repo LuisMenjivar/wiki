@@ -9,7 +9,7 @@ class WikiesController < ApplicationController
   end
 
   def index
-    @wikies_allowed_to_collaborate_on = current_user.collaborations.map(&:wiky)
+    @wikies_allowed_to_collaborate_on = current_user.collaborated_wikys
     @wikies = Wiky.public_wikys
     authorize @wikies
     if (current_user.premium? || current_user.admin?)
