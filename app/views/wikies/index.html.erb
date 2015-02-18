@@ -29,7 +29,7 @@
 <br>
 
 <%= link_to 'New Wiky', new_wiky_path %>
-<% if (current_user.premium? || current_user.admin?) %>
+<% if @private %>
 <h1>Private Wikies</h1>
 
 <table>
@@ -59,9 +59,10 @@
 
 <%= link_to 'New Wiky', new_wiky_path %><br>   
 <% end %>
-
-<% if (current_user.standard?) %>
-<h1>Private Wikies you have been granted rights to collaborate</h1>
+<% if @wikies_allowed_to_collaborate_on.empty? %>
+<h1>You currently do not have any wikies to collaborate on </h1>
+<% else %>
+<h1>Private wikies you have been granted rights to collaborate on</h1>
 
 <table>
   <thead>
