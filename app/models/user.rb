@@ -8,9 +8,7 @@ class User < ActiveRecord::Base
   has_many :collaborated_wikys, through: :collaborations, source: "wiky"
   before_validation :default_to_standard
 
-  def default_to_standard
-    self.role = "standard" if self.role.blank?
-  end
+ 
   
   def admin? 
     role == "admin"
@@ -25,8 +23,7 @@ class User < ActiveRecord::Base
   end
 
   private
-  
   def default_to_standard
-    self.role = "standard"
-  end 
+    self.role = "standard" if self.role.blank?
+  end
 end 
