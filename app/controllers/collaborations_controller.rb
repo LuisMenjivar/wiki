@@ -1,4 +1,5 @@
 class CollaborationsController < ApplicationController
+  before_action :authenticate_user!
   def create
     @wiky = Wiky.find(params[:wiky_id])
     @user = User.where(email: params[:email]).first
