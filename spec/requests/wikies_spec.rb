@@ -11,7 +11,7 @@ RSpec.describe "Wikies", :type => :request do
     it "redirects to sign up page when not signed in" do 
       get wikies_path
       expect(response).to have_http_status(302)
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(new_user_session_path)
     end
 
   end
