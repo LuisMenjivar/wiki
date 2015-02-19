@@ -1,5 +1,5 @@
 class WikiesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search_results]
   before_action :set_wiky, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -52,6 +52,7 @@ class WikiesController < ApplicationController
     @wiky = Wiky.find(params[:id])
     authorize @wiky
     @wiky.destroy
+    flash[:alert] = "Wiky deleted successfully"
     respond_with(@wiky)
   end
 

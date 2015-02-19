@@ -1,7 +1,9 @@
 <div class="container">
 <h1>Editing Wiky</h1>
 <%= render 'form' %>
+<% if @wiky.public? == false %>
 <%= render :partial => "collaborations/form", :locals => {:@collaborations => @collaborations, :@wiky => @wiky} %><br>
+<% end %>
 <%= link_to 'Show', @wiky %> 
 <%= link_to 'Back', wikies_path %><br>
 </div>

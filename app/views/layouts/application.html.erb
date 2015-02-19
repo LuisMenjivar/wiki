@@ -8,28 +8,28 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <div class="container">
-        <p>You are signed in as <%= current_user.email %></p>
-        <ul class="nav nav-tabs">
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Wikies", wikies_path %></li>
+    <div class="container">
+     <ul class="nav nav-tabs">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Wikies", wikies_path %></li>   
+        <% if current_user %>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           <% if current_user.standard? %>
             <li><%= link_to "Not a premium user, Sign up for premium account!", new_charge_path %></li>
-          <% end %>  
-        </ul>
-      </div>  
-      <%= render  'wikies/search' %><br><br>         
-    <% else %>
-      <div class="container">    
-        <ul class="nav nav-tabs">
+          <% end %>                        
+        <% else %>
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
-          <li><%= link_to "Sign In", new_user_session_path %></li>
-        </ul>
-      </div>  
-    <% end %>
+          <li><%= link_to "Sign In", new_user_session_path %></li>    
+        <% end %> 
+      </ul>
+    </div>
 
+  <%= render  'wikies/search' %><br><br>  
+  <% if current_user %>
+    <div class= "container">
+      <p>You are signed in as <%=  current_user.email  %> </p>
+    </div>
+  <% end %>
     <div class="container">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
