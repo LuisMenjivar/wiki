@@ -59,37 +59,37 @@
 
 <%= link_to 'New Wiky', new_wiky_path %><br>   
 <% end %>
-<% if @wikies_allowed_to_collaborate_on.empty? %>
-<h1>You currently do not have any wikies to collaborate on </h1>
-<% else %>
-<h1>Private wikies you have been granted rights to collaborate on</h1>
+<% if @wikies_allowed_to_collaborate_on %>
+  <h1>Private wikies you have been granted rights to collaborate on</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-
-<% @wikies_allowed_to_collaborate_on.each do |wiky| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= wiky.title %></td>
-        <td><%= wiky.body %></td>
-        <td><%= wiky.user.email %></td>
-        <td><%= link_to 'Show', wiky %></td>
-        <td><%= link_to 'Edit', edit_wiky_path(wiky) %></td>
-        <td><%= link_to 'Destroy', wiky, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Title</th>
+        <th>Body</th>
+        <th>User</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
+    </thead>
 
-<%= link_to 'New Wiky', new_wiky_path %><br>   
+    <tbody>
+
+  <% @wikies_allowed_to_collaborate_on.each do |wiky| %>
+        <tr>
+          <td><%= wiky.title %></td>
+          <td><%= wiky.body %></td>
+          <td><%= wiky.user.email %></td>
+          <td><%= link_to 'Show', wiky %></td>
+          <td><%= link_to 'Edit', edit_wiky_path(wiky) %></td>
+          <td><%= link_to 'Destroy', wiky, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+
+  <%= link_to 'New Wiky', new_wiky_path %><br>   
+<% else %>
+  <h1>You currently do not have any wikies to collaborate on </h1>
 <% end %>
 </div>

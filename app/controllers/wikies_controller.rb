@@ -1,5 +1,5 @@
 class WikiesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_wiky, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -9,18 +9,18 @@ class WikiesController < ApplicationController
   end
 
   def index
-    @wikies_allowed_to_collaborate_on = current_user.collaborated_wikys
-    @wikies = Wiky.public_wikys
-    authorize @wikies
-    if (current_user.premium? || current_user.admin?)
-      @private = current_user.wikys.private_wikys
-      authorize @private
+    if current_user
+      @wikies_allowed_to_collaborate_on = current_user.collaborated_wikys
+      if (current_user.premium? || current_user.admin?)
+        @private = current_user.wikys.private_wikys
+        authorize @private
+      end
     end
+    @wikies = Wiky.public_wikys
   end
 
   def show
     respond_with(@wiky)
-    authorize @wiky
   end
 
   def new
